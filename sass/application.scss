@@ -1,5 +1,71 @@
-@import "base";
+@import "partials/base";
+html{
 
-#weapper{
-	@include container;
+	font:$font;
+	background:url('../images/grid.png');
+}
+body{
+	
+}
+/* Wrapper */
+div#pagewrapper{
+	width: 950px;
+	margin: 0px auto;
+}
+/* Header */
+div#header{
+	@include column(24);
+	margin: 20px auto;
+	div#banner{
+		float:right;
+		width:482px;
+	}
+}
+
+/* Content */
+div#content{
+}
+
+/* Form */
+form{
+
+	fieldset{
+		@include column(12);
+		@include push(12);
+
+		div{
+				line-height: 4;
+			label{
+				width:100px;
+				float:left;
+				font-weight:bold;
+				color: $label-color;
+				font-size: 1.2em;
+			}
+			input[type="text"]{
+				@include column(9);
+				margin-top: 7px;
+				margin-left:10px;
+				width:300px;
+				height:42px;
+				font-size: 17px;
+				border: 1px solid #cccccc;
+			}
+			input[type="submit"]{
+			
+				margin-top: 7px;
+				height:42px;
+				font-size: 17px;
+				border: 1px solid #86b9e0;
+				background-color: #3963cc;
+				color:#fff;
+				float:right;
+
+			}
+		}
+	}
+}
+/* Utility Class */
+.clear{
+	clear:both;
 }

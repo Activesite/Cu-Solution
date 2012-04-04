@@ -1,58 +1,87 @@
 @import "partials/base";
+$blueprint-grid-columns: 24;
+$blueprint-container-size: 950px;
+$blueprint-grid-margin: 10px;
+
+// Use this to calculate the width based on the total width.
+// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 html{
 
 	font:$font;
-	background:url('../Images/grid.png');
+	background:url('../Images/BG.png') repeat-x;
 }
 body{
 	
 }
+h1,h2,h3,h4,h5,h6{
+	letter-spacing: -1px;
+}
+h1{
+	font-size: 2.5em;
+}
+h2{
+	font-size: 2.3em;
+}
+h3{
+	font-size: 2.1em;
+}
+h4{
+	font-size: 1.9em;
+}
+h5{
+	font-size: 1.7em;}
+h6{font-size: 1.5em;}
 /* Wrapper */
 div#pagewrapper{
 	width: 950px;
 	margin: 0px auto;
+
 }
 /* Header */
 div#header{
 	@include column(24);
-	margin: 20px auto;
+	margin: 20px auto 10px;
 	div#banner{
-		float:right;
+	
 		width:482px;
+		margin: 0px auto;
 	}
 }
 
 /* Content */
 div#content{
+	@include column(24);
+
 }
 
 /* Form */
 form{
 
 	fieldset{
-		@include column(12);
-		@include push(12);
+
+		width: 524px;
 
 		div{
 				line-height: 4;
 			label{
-				width:100px;
+				width: 200px;
 				float:left;
 				font-weight:bold;
 				color: $label-color;
 				font-size: 1.2em;
 			}
 			input[type="text"]{
-				@include column(9);
-				margin-top: 7px;
-				margin-left:10px;
 				width:300px;
+				margin-top: 7px;
 				height:42px;
 				font-size: 17px;
-				border: 1px solid #cccccc;
+				margin-left: 20px;
+				border: 1px solid #D5D2D2;
+				 @include border-radius(2px);
 			}
 			input[type="submit"]{
-			
+				width: 120px;
 				margin-top: 7px;
 				height:42px;
 				font-size: 17px;
@@ -60,12 +89,96 @@ form{
 				background-color: #3963cc;
 				color:#fff;
 				float:right;
-
+				 @include border-radius(5px);
 			}
 		}
 	}
 }
 /* Utility Class */
+.pagetitle{
+	line-height: 1.5;
+	border-bottom: 2px solid #D3E6F4;
+	margin-bottom: 20px;
+	color: #3756C2;
+	@include single-text-shadow;
+}
+.fieldsettitle{
+	@include column(13);
+}
 .clear{
 	clear:both;
+}
+
+/* iphone */
+
+@media only screen
+and (max-width: 480px) {
+
+$blueprint-grid-columns: 8;
+$blueprint-container-size: 320px;
+
+// Use this to calculate the width based on the total width.
+// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+
+
+/* Styles */
+	h1{
+	font-size: 2em;
+	}
+	div#pagewrapper{
+	width: 	320px;
+	padding:0px;
+	margin: 0 auto;
+	}
+	/* Header */
+div#header{
+	@include column(8);
+
+	margin: 10px auto 0px;
+	div#banner{
+	
+		width:300px;
+		margin: 0px 0px 0px 5px;
+		img{
+			width:300px;
+		}
+	}
+}
+
+/* Content */
+div#content{
+	@include column(8);
+	@include last;
+}
+div#content h1{
+	margin: 0px 0px 0px 5px;
+}
+/* Form */
+form{
+
+	fieldset{
+		width: 300px;
+		padding-left: 10px;		
+		padding-right: 10px;
+		div{
+				line-height: 2;
+			label{
+
+			}
+			input[type="text"]{
+				width:280px;
+				font-size: 17px;
+				margin-left: 0px;
+	
+			}
+			input[type="submit"]{
+				width: 120px;
+				margin-top: 10px;
+				margin-bottom: 20px;
+				margin-right: 10px;
+			}
+		}
+	}
+}
 }

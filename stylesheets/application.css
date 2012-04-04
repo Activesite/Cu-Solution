@@ -63,86 +63,120 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 2, ../sass/application.scss */
+/* line 9, ../sass/application.scss */
 html {
   font: 81.25%/1 Arial, sans-serif;
-  background: url("../Images/grid.png");
+  background: url("../Images/BG.png") repeat-x;
+}
+
+/* line 17, ../sass/application.scss */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -1px;
+}
+
+/* line 20, ../sass/application.scss */
+h1 {
+  font-size: 2.5em;
+}
+
+/* line 23, ../sass/application.scss */
+h2 {
+  font-size: 2.3em;
+}
+
+/* line 26, ../sass/application.scss */
+h3 {
+  font-size: 2.1em;
+}
+
+/* line 29, ../sass/application.scss */
+h4 {
+  font-size: 1.9em;
+}
+
+/* line 32, ../sass/application.scss */
+h5 {
+  font-size: 1.7em;
+}
+
+/* line 34, ../sass/application.scss */
+h6 {
+  font-size: 1.5em;
 }
 
 /* Wrapper */
-/* line 11, ../sass/application.scss */
+/* line 36, ../sass/application.scss */
 div#pagewrapper {
   width: 950px;
   margin: 0px auto;
 }
 
 /* Header */
-/* line 16, ../sass/application.scss */
+/* line 42, ../sass/application.scss */
 div#header {
   display: inline;
   float: left;
   margin-right: 10px;
   width: 950px;
-  margin: 20px auto;
+  margin: 20px auto 10px;
 }
 /* line 147, ../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html div#header {
   overflow-x: hidden;
 }
-/* line 19, ../sass/application.scss */
+/* line 45, ../sass/application.scss */
 div#header div#banner {
-  float: right;
   width: 482px;
+  margin: 0px auto;
 }
 
 /* Content */
-/* Form */
-/* line 32, ../sass/application.scss */
-form fieldset {
+/* line 53, ../sass/application.scss */
+div#content {
   display: inline;
   float: left;
   margin-right: 10px;
-  width: 470px;
-  display: inline;
-  float: left;
-  position: relative;
-  margin: 0 -480px 1.5em 480px;
+  width: 950px;
 }
 /* line 147, ../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html form fieldset {
+* html div#content {
   overflow-x: hidden;
 }
-/* line 36, ../sass/application.scss */
+
+/* Form */
+/* line 61, ../sass/application.scss */
+form fieldset {
+  width: 524px;
+}
+/* line 65, ../sass/application.scss */
 form fieldset div {
   line-height: 4;
 }
-/* line 38, ../sass/application.scss */
+/* line 67, ../sass/application.scss */
 form fieldset div label {
-  width: 100px;
+  width: 200px;
   float: left;
   font-weight: bold;
-  color: #64666c;
+  color: #4d6ac1;
   font-size: 1.2em;
 }
-/* line 45, ../sass/application.scss */
+/* line 74, ../sass/application.scss */
 form fieldset div input[type="text"] {
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  width: 350px;
-  margin-top: 7px;
-  margin-left: 10px;
   width: 300px;
+  margin-top: 7px;
   height: 42px;
   font-size: 17px;
-  border: 1px solid #cccccc;
+  margin-left: 20px;
+  border: 1px solid #D5D2D2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
 }
-/* line 147, ../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html form fieldset div input[type="text"] {
-  overflow-x: hidden;
-}
-/* line 54, ../sass/application.scss */
+/* line 83, ../sass/application.scss */
 form fieldset div input[type="submit"] {
+  width: 120px;
   margin-top: 7px;
   height: 42px;
   font-size: 17px;
@@ -150,10 +184,120 @@ form fieldset div input[type="submit"] {
   background-color: #3963cc;
   color: #fff;
   float: right;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /* Utility Class */
-/* line 69, ../sass/application.scss */
+/* line 98, ../sass/application.scss */
+.pagetitle {
+  line-height: 1.5;
+  border-bottom: 2px solid #D3E6F4;
+  margin-bottom: 20px;
+  color: #3756C2;
+  text-shadow: rgba(0, 0, 255, 0.6) 0px 1px 3px;
+}
+
+/* line 105, ../sass/application.scss */
+.fieldsettitle {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 510px;
+}
+/* line 147, ../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .fieldsettitle {
+  overflow-x: hidden;
+}
+
+/* line 108, ../sass/application.scss */
 .clear {
   clear: both;
+}
+
+/* iphone */
+@media only screen
+and (max-width: 480px) {
+  /* Styles */
+  /* line 126, ../sass/application.scss */
+  h1 {
+    font-size: 2em;
+  }
+
+  /* line 129, ../sass/application.scss */
+  div#pagewrapper {
+    width: 320px;
+    padding: 0px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  /* line 135, ../sass/application.scss */
+  div#header {
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    width: 320px;
+    margin: 10px auto 0px;
+  }
+  /* line 147, ../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+  * html div#header {
+    overflow-x: hidden;
+  }
+  /* line 139, ../sass/application.scss */
+  div#header div#banner {
+    width: 300px;
+    margin: 0px 0px 0px 5px;
+  }
+  /* line 143, ../sass/application.scss */
+  div#header div#banner img {
+    width: 300px;
+  }
+
+  /* Content */
+  /* line 150, ../sass/application.scss */
+  div#content {
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    width: 320px;
+    margin-right: 0;
+  }
+  /* line 147, ../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+  * html div#content {
+    overflow-x: hidden;
+  }
+
+  /* line 154, ../sass/application.scss */
+  div#content h1 {
+    margin: 0px 0px 0px 5px;
+  }
+
+  /* Form */
+  /* line 160, ../sass/application.scss */
+  form fieldset {
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* line 164, ../sass/application.scss */
+  form fieldset div {
+    line-height: 2;
+  }
+  /* line 169, ../sass/application.scss */
+  form fieldset div input[type="text"] {
+    width: 280px;
+    font-size: 17px;
+    margin-left: 0px;
+  }
+  /* line 175, ../sass/application.scss */
+  form fieldset div input[type="submit"] {
+    width: 120px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+  }
 }

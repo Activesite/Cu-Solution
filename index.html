@@ -2,7 +2,11 @@
 <html lang="en-US">
 <head>
 	<link rel="stylesheet" href="stylesheets/application.css">
+	<meta name = "viewport" content = "width = device-width">
+	<meta name = "viewport" content = "initial-scale = 1.0">
 	<meta charset="UTF-8">
+	<script type='text/javascript' src='scripts/jQuery.js'></script>
+	<script type='text/javascript' src='scripts/protoFluid3.02.js'></script>
 	<title>Cu Solution Demo</title>
 </head>
 <body>
@@ -12,13 +16,12 @@
 			<br class="clear">
 		</div>
 		<div id="content">
+		<h1 class="pagetitle">Add Product</h1>
 			<form action="">
 				<fieldset>
-					<div><label for="name">Name:</label><input id='name' type="text"><br class="clear"></div>
+					<div><label for="productcode">Product Code:</label><input id='productcode' type="text"><br class="clear"></div>
 				
-					<div><label for="surname">Surname:</label><input id="surname" type="text"><br class="clear"></div>
-
-					<div><label for="item_name">Item Name:</label><input id='item_name' type="text"><br class="clear"></div>
+					<div><label for="productname">Product Name:</label><input id="productname" type="text"><br class="clear"></div>
 					<div><input type="submit" value="Add">
 				</fieldset>
 			</form>

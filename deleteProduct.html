@@ -12,18 +12,28 @@
 	{
 	    if(e.keyCode === 13)
 	    {
-	        $('input#searchproduct').click();
+	        $('input#deleteproduct').click();
 	    }
 	}
 	window.onload = function() {
-		$(document).bind('keypress',pressed);
-		$('input#searchproduct').click(function(argument) {
+		$(document).bind('keypress',pressed);	
+		$('input#deleteproduct').click(function(argument) {
+
+			var cancel = confirm("Are you sure you want to delete " + document.getElementById("productcode").value + "?" );
+			if (!(cancel)){
+				return;
+			}
+
+		$('div#result').empty();
 		jQuery.support.cors = true; /*Allow same origin policy for javascript*/
-			var theRequest = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\
+			var theRequest = 
+			"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:ser=\"http://schemas.datacontract.org/2004/07/ServiceStock.IMSService\">\
 			   <soapenv:Body>\
-			      <tem:GetProduct>\
-			            <tem:productCode>"+document.getElementById("productcode").value +"</tem:productCode>\
-			      </tem:GetProduct>\
+			      <tem:DeleteProduct>\
+			         <tem:product>\
+			            <ser:ProductCode>"+document.getElementById("productcode").value +"</ser:ProductCode>\
+			         </tem:product>\
+			      </tem:DeleteProduct>\
 			   </soapenv:Body>\
 			</soapenv:Envelope>"
 			$.ajax({
@@ -38,32 +48,35 @@
 					// Pass the action onto the proxy.
 					xhr.setRequestHeader(
 					"SOAPAction",
-					"http://tempuri.org/IProductService/GetProduct"
+					"http://tempuri.org/IProductService/DeleteProduct"
 					);
+
 				},
 				success:function(data){
-				$('div.error').remove();
-				var	productData = $(data).find("GetProductResult");
-				var	priceperunit = $(productData[0].childNodes[0]).text();
-				var	productcode = $(productData[0].childNodes[1]).text();
-				var	productname = $(productData[0].childNodes[2]).text();
-				var	quantity = $(productData[0].childNodes[3]).text();
-					
+				rowdeleted = $(data).find("DeleteProductResult").text();
+				if(rowdeleted == 0){
+					 $('<div />', {
+      					"class":"error",
+					    text: "Please input valid record"
+					}).appendTo('div#result');
+				}else{
 
 					$('<div/>', {
-						"class":"success",
-					    text: productcode +" ("+productname+ ") " +priceperunit+ " THB/unit , "+ quantity+ " unit left "
-					}).appendTo('div#result').hide().fadeIn(1000);;
+							"class":"success",
+						    text: "The record has been deleted"
+							}).appendTo('div#result').hide().fadeIn(1000);
 					$("input[type=text]").val("");
+
+					}
 				},
       			error: function(request, status, error){
-      			$('div#result').empty();
       			$('<div />', {
       					"class":"error",
 					    text: "Please input valid record"
-						}).appendTo('div#result').hide().fadeIn(1000);;
+						}).appendTo('div#result').hide().fadeIn(1000);
       			errortext = request.responseText;
       			errortext = $(errortext).find("faultstring").text();
+				console.log(errortext);
 				}
     		});
 
@@ -76,24 +89,23 @@
 </head>
 <body>
 	<div id="pagewrapper">
-		<div id="header">
+		<div id="header">	
 			<div id="banner"><img src="Images/CU-Solution.png" alt="CU-Solution"></div>
 			<div id="menubar" class="right">				
 				<a class="search" href="index.html"><img src="Images/search.png" alt=""></a>	
 				<a class="add" href="addProduct.html"><img src="Images/add-item.png" alt=""></a>
 				<a class="delete" href="deleteProduct.html"><img src="Images/recycle-full.png" alt=""></a>
 			</div>
-			<div class="clear" />
+			<div class="clear"/>
 		</div>
 		<div id="content">
-		<h1 class="pagetitle">Search Product</h1>
+		<h1 class="pagetitle">Delete Product</h1>
 				<fieldset>
 					<div><label for="productcode">Product Code:</label><input id='productcode' type="text"><br class="clear"></div>
-					<div><input type="button" value="Search" id="searchproduct"></div>
+					<div><input type="button" value="Delete" id="deleteproduct"></div>
 				</fieldset>
 		</div>
-		<div id="result">
-		</div>
+	<div id="result"></div>
 	</div>
 </body>
 </html>

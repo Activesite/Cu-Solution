@@ -54,14 +54,16 @@ div#content{
 	@include column(24);
 
 }
-
+div#result{
+	@include column(24);
+}
 /* Form */
-form{
+
 
 	fieldset{
 
 		width: 524px;
-
+		margin:0px auto;
 		div{
 				line-height: 4;
 			label{
@@ -80,7 +82,7 @@ form{
 				border: 1px solid #D5D2D2;
 				 @include border-radius(2px);
 			}
-			input[type="submit"]{
+			input[type="submit"],input[type="button"]{
 				width: 120px;
 				margin-top: 7px;
 				height:42px;
@@ -89,11 +91,11 @@ form{
 				background-color: #3963cc;
 				color:#fff;
 				float:right;
-				 @include border-radius(5px);
+				@include border-radius(5px);
 			}
 		}
 	}
-}
+
 /* Utility Class */
 .pagetitle{
 	line-height: 1.5;
@@ -108,7 +110,31 @@ form{
 .clear{
 	clear:both;
 }
-
+.right{
+	float:right;
+}
+div.error {
+    background-color: #FB4747;
+    border: 1px solid #C8BABA;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    width: 70%;
+    @include border-radius(5px);
+}
+div.success {
+    background-color: #2D6B80;
+    border: 1px solid #C8BABA;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    width: 70%;
+    @include border-radius(5px);
+}
 /* iphone */
 
 @media only screen

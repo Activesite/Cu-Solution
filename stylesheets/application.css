@@ -143,25 +143,38 @@ div#content {
   overflow-x: hidden;
 }
 
-/* Form */
-/* line 61, ../sass/application.scss */
-form fieldset {
-  width: 524px;
+/* line 57, ../sass/application.scss */
+div#result {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 950px;
 }
-/* line 65, ../sass/application.scss */
-form fieldset div {
-  line-height: 4;
+/* line 147, ../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html div#result {
+  overflow-x: hidden;
+}
+
+/* Form */
+/* line 63, ../sass/application.scss */
+fieldset {
+  width: 524px;
+  margin: 0px auto;
 }
 /* line 67, ../sass/application.scss */
-form fieldset div label {
+fieldset div {
+  line-height: 4;
+}
+/* line 69, ../sass/application.scss */
+fieldset div label {
   width: 200px;
   float: left;
   font-weight: bold;
   color: #4d6ac1;
   font-size: 1.2em;
 }
-/* line 74, ../sass/application.scss */
-form fieldset div input[type="text"] {
+/* line 76, ../sass/application.scss */
+fieldset div input[type="text"] {
   width: 300px;
   margin-top: 7px;
   height: 42px;
@@ -174,8 +187,8 @@ form fieldset div input[type="text"] {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 83, ../sass/application.scss */
-form fieldset div input[type="submit"] {
+/* line 85, ../sass/application.scss */
+fieldset div input[type="submit"], fieldset div input[type="button"] {
   width: 120px;
   margin-top: 7px;
   height: 42px;
@@ -192,7 +205,7 @@ form fieldset div input[type="submit"] {
 }
 
 /* Utility Class */
-/* line 98, ../sass/application.scss */
+/* line 100, ../sass/application.scss */
 .pagetitle {
   line-height: 1.5;
   border-bottom: 2px solid #D3E6F4;
@@ -201,7 +214,7 @@ form fieldset div input[type="submit"] {
   text-shadow: rgba(0, 0, 255, 0.6) 0px 1px 3px;
 }
 
-/* line 105, ../sass/application.scss */
+/* line 107, ../sass/application.scss */
 .fieldsettitle {
   display: inline;
   float: left;
@@ -213,21 +226,60 @@ form fieldset div input[type="submit"] {
   overflow-x: hidden;
 }
 
-/* line 108, ../sass/application.scss */
+/* line 110, ../sass/application.scss */
 .clear {
   clear: both;
+}
+
+/* line 113, ../sass/application.scss */
+.right {
+  float: right;
+}
+
+/* line 116, ../sass/application.scss */
+div.error {
+  background-color: #FB4747;
+  border: 1px solid #C8BABA;
+  color: #FFFFFF;
+  font-size: 1.5em;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  width: 70%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 127, ../sass/application.scss */
+div.success {
+  background-color: #2D6B80;
+  border: 1px solid #C8BABA;
+  color: #FFFFFF;
+  font-size: 1.5em;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  width: 70%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /* iphone */
 @media only screen
 and (max-width: 480px) {
   /* Styles */
-  /* line 126, ../sass/application.scss */
+  /* line 152, ../sass/application.scss */
   h1 {
     font-size: 2em;
   }
 
-  /* line 129, ../sass/application.scss */
+  /* line 155, ../sass/application.scss */
   div#pagewrapper {
     width: 320px;
     padding: 0px;
@@ -235,7 +287,7 @@ and (max-width: 480px) {
   }
 
   /* Header */
-  /* line 135, ../sass/application.scss */
+  /* line 161, ../sass/application.scss */
   div#header {
     display: inline;
     float: left;
@@ -247,18 +299,18 @@ and (max-width: 480px) {
   * html div#header {
     overflow-x: hidden;
   }
-  /* line 139, ../sass/application.scss */
+  /* line 165, ../sass/application.scss */
   div#header div#banner {
     width: 300px;
     margin: 0px 0px 0px 5px;
   }
-  /* line 143, ../sass/application.scss */
+  /* line 169, ../sass/application.scss */
   div#header div#banner img {
     width: 300px;
   }
 
   /* Content */
-  /* line 150, ../sass/application.scss */
+  /* line 176, ../sass/application.scss */
   div#content {
     display: inline;
     float: left;
@@ -271,29 +323,29 @@ and (max-width: 480px) {
     overflow-x: hidden;
   }
 
-  /* line 154, ../sass/application.scss */
+  /* line 180, ../sass/application.scss */
   div#content h1 {
     margin: 0px 0px 0px 5px;
   }
 
   /* Form */
-  /* line 160, ../sass/application.scss */
+  /* line 186, ../sass/application.scss */
   form fieldset {
     width: 300px;
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 164, ../sass/application.scss */
+  /* line 190, ../sass/application.scss */
   form fieldset div {
     line-height: 2;
   }
-  /* line 169, ../sass/application.scss */
+  /* line 195, ../sass/application.scss */
   form fieldset div input[type="text"] {
     width: 280px;
     font-size: 17px;
     margin-left: 0px;
   }
-  /* line 175, ../sass/application.scss */
+  /* line 201, ../sass/application.scss */
   form fieldset div input[type="submit"] {
     width: 120px;
     margin-top: 10px;

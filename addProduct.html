@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<link rel="stylesheet" href="stylesheets/application.css">
+	<meta name = "viewport" content = "width = device-width">
+	<meta name = "viewport" content = "initial-scale = 1.0">
+	<meta charset="UTF-8">
+	<script type='text/javascript' src='scripts/jQuery.js'></script>
+	<script type='text/javascript' src='scripts/protoFluid3.02.js'></script>
+	<script type="text/javascript">
+	function pressed(e)
+	{
+	    if(e.keyCode === 13)
+	    {
+	        $('input#addproduct').click();
+	    }
+	}
+	window.onload = function() {
+		$(document).bind('keypress',pressed);
+		$('input#addproduct').click(function(argument) {
+		$('div#result').empty();
+		jQuery.support.cors = true; /*Allow same origin policy for javascript*/
+			var theRequest = 
+			"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:ser=\"http://schemas.datacontract.org/2004/07/ServiceStock.IMSService\">\
+			   <soapenv:Body>\
+			      <tem:AddProduct>\
+			         <tem:product>\
+			            <ser:PricePerUnit>"+document.getElementById("priceperunit").value+"</ser:PricePerUnit>\
+			            <ser:ProductCode>"+document.getElementById("productcode").value +"</ser:ProductCode>\
+			            <ser:ProductName>"+document.getElementById("productname").value +"</ser:ProductName>\
+			            <ser:Quantity>"+document.getElementById("productquantity").value +"</ser:Quantity>\
+			         </tem:product>\
+			      </tem:AddProduct>\
+			   </soapenv:Body>\
+			</soapenv:Envelope>"
+			$.ajax({
+      			type: "POST",
+      			url: "http://localhost:8080/HostCU/IMSService/?wsdl",
+      			data: theRequest,
+      			timeout: 10000,
+      			contentType: "text/xml",
+      			dataType: "xml",
+      			async: false,
+				beforeSend: function(xhr){
+					// Pass the action onto the proxy.
+					xhr.setRequestHeader(
+					"SOAPAction",
+					"http://tempuri.org/IProductService/AddProduct"
+					);
+				},
+				success:function(data){
+				$('<div/>', {
+						"class":"success",
+					    text: "The record has been created"
+						}).appendTo('div#result').hide().fadeIn(1000);
+				$("input[type=text]").val("");
+				},
+      			error: function(request, status, error){
+      			$('<div />', {
+      					"class":"error",
+					    text: "Please input valid data"
+						}).appendTo('div#result').hide().fadeIn(1000);
+      			errortext = request.responseText;
+      			errortext = $(errortext).find("faultstring").text();
+				console.log(errortext);
+				}
+    		});
+
+		});
+		
+	}
+
+	</script>
+	<title>Cu Solution Demo</title>
+</head>
+<body>
+	<div id="pagewrapper">
+		<div id="header">
+			<div id="banner"><img src="Images/CU-Solution.png" alt="CU-Solution"></div>
+			<div id="menubar" class="right">				
+			<a class="search" href="index.html"><img src="Images/search.png" alt=""></a>	
+			<a class="add" href="addProduct.html"><img src="Images/add-item.png" alt=""></a>
+			<a class="delete" href="deleteProduct.html"><img src="Images/recycle-full.png" alt=""></a>
+			</div>
+			<div class="clear"/>
+		</div>
+		<div id="content">
+		<h1 class="pagetitle">Add Product</h1>
+				<fieldset>
+					<div><label for="productcode">Product Code:</label><input id='productcode' type="text"><br class="clear"></div>
+					<div><label for="productname">Product Name:</label><input id="productname" type="text"><br class="clear"></div>
+					<div><label for="productname">Price / Unit:</label><input id="priceperunit" type="text"><br class="clear"></div>
+					<div><label for="productname">Quantity:</label><input id="productquantity" type="text"><br    class="clear"></div>
+					<div><input type="button" value="Add" id="addproduct"></div>
+				</fieldset>
+		</div>
+		<div id="result">
+
+		</div>
+	</div>
+</body>
+</html>
